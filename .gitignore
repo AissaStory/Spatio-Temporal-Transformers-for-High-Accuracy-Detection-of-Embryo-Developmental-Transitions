@@ -1,0 +1,9 @@
+# Ignore datasets
+Data/
+
+# Ignore model checkpoints
+Models/
+
+# Ignore Python cache
+__pycache__/
+*.pyc

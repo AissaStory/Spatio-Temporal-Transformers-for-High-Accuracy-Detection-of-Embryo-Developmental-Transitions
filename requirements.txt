@@ -1,0 +1,13 @@
+pandas  
+scikit-learn
+tqdm
+torch
+torchvision
+timm
+transformers
+matplotlib
+seaborn
+scikit-learn
+python-dotenv
+flask
+psycopg2-binary
