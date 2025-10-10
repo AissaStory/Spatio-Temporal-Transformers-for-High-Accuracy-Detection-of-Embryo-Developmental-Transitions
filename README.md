@@ -1,8 +1,14 @@
+<div align="center">
+
+![ISEN Logo](Ressources/ISEN.jpg)
+
 # Spatio-Temporal Transformers for High-Accuracy Detection of Embryo Developmental Transitions
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-red.svg)](https://pytorch.org/)
+
+</div>
 
 A comprehensive system for analyzing embryo developmental transitions using state-of-the-art deep learning models, featuring both training capabilities and a web-based application for real-time analysis.
 
@@ -148,7 +154,6 @@ The system uses `Configs/config.ini` for training configuration:
 
 ```ini
 [data]
-multi_cpu = True          # Enable multi-CPU processing
 data_loader = image_seq    # Data loader type (image_seq/video)
 window_size = 8           # Sequence window size
 stride = 1               # Sliding window stride
@@ -187,8 +192,6 @@ python train.py --model_name resnet18 --batch_size 16 --epochs 50 --learning_rat
 # Train TimeSformer for 32-frame sequences
 python train.py --model_name timesformer --window_size 32 --batch_size 8 --epochs 100
 
-# Multi-GPU training
-python train.py --multi_gpu True --batch_size 32 --num_workers 16
 ```
 
 ### Training Arguments Explained
@@ -201,7 +204,6 @@ python train.py --multi_gpu True --batch_size 32 --num_workers 16
 | `--learning_rate` | Learning rate          | 0.001    | 0.0001, 0.001, 0.01   |
 | `--window_size`   | Sequence window size   | 8        | 8, 16, 32             |
 | `--stride`        | Sliding window stride  | 1        | 1, 2, 4               |
-| `--multi_gpu`     | Enable multi-GPU       | False    | True, False           |
 | `--num_workers`   | Data loading workers   | 8        | 4, 8, 16              |
 | `--image_size`    | Input image size       | 224      | 224, 256, 512         |
 | `--pretrained`    | Use pretrained weights | True     | True, False           |
@@ -242,7 +244,7 @@ python train.py --multi_gpu True --batch_size 32 --num_workers 16
 
    ```bash
    cd WebApplication
-   flask --app app.py --debug run
+   flask run
    ```
 
 3. **Access Application**: Open browser to `http://127.0.0.1:5000`
@@ -310,14 +312,24 @@ The system works with embryo image sequences containing developmental transition
 - **Metadata**: Patient information, grading data
 - **Transitions**: Developmental stage changes
 
+### Dataset Source
+
+This project uses the **Human embryo time-lapse video dataset** from Zenodo:
+
+- **Dataset**: [Human embryo time-lapse video dataset](https://zenodo.org/records/7912264)
+- **DOI**: 10.5281/zenodo.7912264
+- **License**: Creative Commons Attribution Non Commercial Share Alike 4.0 International
+- **Creators**: Gomez Tristan, Feyeux Magalie, Boulant Justine, Normand Nicolas, Paul-Gilloteaux Perrine, David Laurent, Fréour Thomas, Mouchère Harold
+
 ### Data Format
 
 ```
 Data/
-├── embryo_dataset_F0/          # Original embryo images
-├── embryo_dataset_annotations/ # Phase annotations
-├── embryo_dataset_grades.csv   # Grading information
-└── Splits/                     # Train/validation/test splits
+├── embryo_dataset_F0/             # Original embryo images
+├── embryo_dataset_annotations/    # Phase annotations
+├── embryo_dataset_time_elapsed/   # TimeElapsed annotations
+├── embryo_dataset_grades.csv      # Grading information
+└── Splits/                        # Train/validation/test splits
 ```
 
 ## 🔧 Configuration Details
@@ -326,7 +338,6 @@ Data/
 
 #### Data Parameters
 
-- `multi_cpu`: Enable multi-CPU data loading
 - `data_loader`: Type of data loader (image_seq/video)
 - `window_size`: Number of frames in each sequence
 - `stride`: Step size for sliding window
@@ -397,7 +408,6 @@ SECRET_KEY=your-secret-key-here      # Flask secret key for sessions
 ### Training Optimization
 
 - **GPU Acceleration**: Automatic CUDA detection
-- **Multi-GPU Support**: Distributed training capabilities
 - **Data Loading**: Multi-worker data loading
 - **Memory Management**: Efficient batch processing
 
@@ -438,10 +448,11 @@ If you use this project in your research, please cite our paper:
 ```bibtex
 @article{embryo_transitions_2024,
   title={Spatio-Temporal Transformers for High-Accuracy Detection of Embryo Developmental Transitions},
-  author={LSL Team},
-  journal={Journal of Medical AI},
-  year={2024},
-  url={https://example.com/paper-link}
+  author={Aissa Benfettoume Souda, Mohammed El Amine Bechar, Souaad
+Hamza-Cherif, Jean-Marie Guyader, Marwa Elbouz, Fréderic Morel,
+Aurore Perrin, and Nesma Settouti},
+  year={2025},
+  url={will be updated}
 }
 ```
 
@@ -478,17 +489,16 @@ We welcome contributions to improve this project! Please:
 
 For questions, issues, or contributions:
 
-- **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-repo/discussions)
-- **Email**: [Contact Email](mailto:contact@example.com)
+- **Issues**: [GitHub Issues](https://github.com/AissaStory/Spatio-Temporal-Transformers-for-High-Accuracy-Detection-of-Embryo-Developmental-Transitions/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/AissaStory/Spatio-Temporal-Transformers-for-High-Accuracy-Detection-of-Embryo-Developmental-Transitions/discussions)
+- **Email**: [Contact Email](aissabenfettoumesouda@gmail.com)
 
 ## 🙏 Acknowledgments
 
-- **LSL Team**: Core development team
-- **Gomez Database**: Provided embryo dataset
+- **[LSL Team](https://isen-ouest.fr/labisen-la-recherche/equipes-de-recherche/lsl-light-scatter-leaning/)**: Core development team at ISEN Ouest
+- **[Gomez Database](https://zenodo.org/records/7912264)**: Provided embryo dataset
 - **PyTorch Community**: Deep learning framework
 - **Flask Community**: Web framework
-- **Medical Research Community**: Domain expertise
 
 ---
 
