@@ -112,3 +112,7 @@ CREATE INDEX idx_embryo_pgt_a_grade ON embryo (pgt_a_grade);
 CREATE INDEX idx_embryo_live_birth ON embryo (live_birth);
 
 CREATE INDEX idx_embryo_doctor_date ON embryo (doctor_id, date);
+
+INSERT INTO users (first_name, last_name, birthday, contact, address, gender, role, global_access) VALUES
+('Mouhamed El Amine', 'Bechar', '1980-05-15', 'mouhamed.bechar@isen.fr', '456 Elm St, Othertown, Brest', 'Male', 'Admin', TRUE);
+UPDATE user_auth SET password = 'isen1234' WHERE user_id = 3;
